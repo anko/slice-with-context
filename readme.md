@@ -1,4 +1,4 @@
-# slice-with-context
+# slice-with-context&emsp;[![](https://img.shields.io/npm/v/slice-with-context.svg?style=flat-square)](https://www.npmjs.com/package/slice-with-context) [![](https://img.shields.io/travis/anko/slice-with-context.svg?style=flat-square)](https://travis-ci.org/anko/slice-with-context) [![](https://img.shields.io/david/anko/slice-with-context?style=flat-square)](https://david-dm.org/anko/slice-with-context)
 
 Basically `String.prototype.slice`, but with a configurably-positioned window
 around it, showing context.
