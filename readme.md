@@ -225,6 +225,40 @@ console.log(output)
 
 
 <details><summary>
+Both-sided context, but no space at end
+</summary>
+
+<!-- !test in both sides context but at end -->
+
+```js
+const sliceWithContext = require('slice-with-context')
+const output = sliceWithContext(
+  '1234567890',
+  6, // windowSize
+  6, // offset
+  4, // length
+  0.5, // windowLeftBias
+  0, // overflowLeftBias
+)
+console.log(output)
+```
+
+<!-- !test out both sides context but at end -->
+
+> ```
+> {
+>   fit: true,
+>   withContext: '567890',
+>   visibleSlice: '7890',
+>   fullSlice: '7890',
+>   position: { offset: 2, length: 4 }
+> }
+> ```
+</details>
+
+
+
+<details><summary>
 Insufficient space in window, truncated to show start
 </summary>
 

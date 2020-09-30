@@ -28,15 +28,25 @@ const sliceWithContext = (
     // Sliced part fits fully in the window.  Calculate space left over, and
     // distribute it according to windowLeftBias.
 
-    const charsLeftForContext = windowSize - length
-    const leftContextLength = Math.min(
-      // How much we would theoretically want
-      Math.floor(charsLeftForContext * windowLeftBias),
+    const contextSpace = windowSize - length
+
+    let leftContextLength = Math.min(
+      // How much we want
+      Math.floor(contextSpace * windowLeftBias),
       // How much space there actually is between the left edge and where the
       // slice begins
       offset
     )
-    const rightContextLength = charsLeftForContext - leftContextLength
+    const rightContextLength = Math.min(
+      // How much we want
+      contextSpace - leftContextLength,
+      // How much space there actually is between where the slice ends and the
+      // right edge
+      inputText.length - offset - length
+    )
+    // In case the right side turned out to have insufficient space, give the
+    // rest back to the left.  We know this still fits.
+    leftContextLength = contextSpace - rightContextLength
 
     const windowOffset = offset - leftContextLength
     const windowLength = length + leftContextLength + rightContextLength
